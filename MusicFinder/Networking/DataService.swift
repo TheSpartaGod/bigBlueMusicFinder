@@ -7,6 +7,7 @@
 import Alamofire
 
 public class DataService: DataServiceProtocol {
+    
     public static let shared: DataService = DataService()
     var searchResponseDelegate: SearchResponseProtocol?
     

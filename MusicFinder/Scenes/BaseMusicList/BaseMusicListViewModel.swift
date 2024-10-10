@@ -52,7 +52,7 @@ class BaseMusicListViewModel: BaseMusicListViewToVM {
     }
     
     func selectedTrack(index: Int) {
-        
+        view?.playAudioFromUrl(url: getStreamLink(index: index))
     }
     
     

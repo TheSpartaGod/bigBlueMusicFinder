@@ -27,6 +27,8 @@
 		99736E882CB82131005F65E7 /* MusicEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99736E862CB82131005F65E7 /* MusicEntryCell.swift */; };
 		99736E892CB82131005F65E7 /* MusicEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99736E872CB82131005F65E7 /* MusicEntryCell.xib */; };
 		99736E8B2CB827BD005F65E7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99736E8A2CB827BB005F65E7 /* Extensions.swift */; };
+		99736E8E2CB83932005F65E7 /* MusicControls.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99736E8D2CB83932005F65E7 /* MusicControls.xib */; };
+		99736E922CB8396E005F65E7 /* MusicControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99736E912CB8396E005F65E7 /* MusicControls.swift */; };
 		A5B9AAC984A53AA6B02982C7 /* Pods_MusicFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E87B6135DAD310BD5E41B7 /* Pods_MusicFinder.framework */; };
 		D64456279396D7C5CF5D4A66 /* Pods_MusicFinder_MusicFinderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B29787DF4D2275CA726D4F1A /* Pods_MusicFinder_MusicFinderUITests.framework */; };
 /* End PBXBuildFile section */
@@ -71,6 +73,8 @@
 		99736E862CB82131005F65E7 /* MusicEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEntryCell.swift; sourceTree = "<group>"; };
 		99736E872CB82131005F65E7 /* MusicEntryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicEntryCell.xib; sourceTree = "<group>"; };
 		99736E8A2CB827BB005F65E7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		99736E8D2CB83932005F65E7 /* MusicControls.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicControls.xib; sourceTree = "<group>"; };
+		99736E912CB8396E005F65E7 /* MusicControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicControls.swift; sourceTree = "<group>"; };
 		99C812642CB6CE7F00F09CEE /* MusicFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99C8127A2CB6CE8100F09CEE /* MusicFinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicFinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99C812842CB6CE8100F09CEE /* MusicFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +202,8 @@
 		99736E8C2CB831B1005F65E7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				99736E8D2CB83932005F65E7 /* MusicControls.xib */,
+				99736E912CB8396E005F65E7 /* MusicControls.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -348,6 +354,7 @@
 				992CFFA62CB8111C007DC9D3 /* BaseMusicListView.xib in Resources */,
 				992CFFA72CB8111C007DC9D3 /* Assets.xcassets in Resources */,
 				99736E892CB82131005F65E7 /* MusicEntryCell.xib in Resources */,
+				99736E8E2CB83932005F65E7 /* MusicControls.xib in Resources */,
 				992CFFA92CB8111C007DC9D3 /* LaunchScreen.storyboard in Resources */,
 				992CFFAA2CB8111C007DC9D3 /* Main.storyboard in Resources */,
 			);
@@ -479,6 +486,7 @@
 			files = (
 				992CFFAB2CB8111C007DC9D3 /* BaseMusicListProtocols.swift in Sources */,
 				99736E802CB81A7B005F65E7 /* DataService.swift in Sources */,
+				99736E922CB8396E005F65E7 /* MusicControls.swift in Sources */,
 				99736E882CB82131005F65E7 /* MusicEntryCell.swift in Sources */,
 				992CFFAC2CB8111C007DC9D3 /* BaseMusicListViewController.swift in Sources */,
 				99736E842CB81E86005F65E7 /* DataServiceProtocol.swift in Sources */,

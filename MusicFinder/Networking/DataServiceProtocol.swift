@@ -9,6 +9,8 @@ import Alamofire
 
 protocol DataServiceProtocol: AnyObject {
     var searchResponseDelegate: SearchResponseProtocol? { get set }
+    
+    func searchTrack(searchTerm: String)
 }
 
 protocol SearchResponseProtocol: AnyObject {
