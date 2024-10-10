@@ -12,7 +12,7 @@ public class BaseConfigurator {
     
     public func createBaseScreen() -> UIViewController {
         let view: BaseMusicListViewController = BaseMusicListViewController()
-        let viewModel = BaseMusicListViewModel()
+        let viewModel = BaseMusicListViewModel(dataService: DataService.shared)
         view.viewModel = viewModel
     
         return view

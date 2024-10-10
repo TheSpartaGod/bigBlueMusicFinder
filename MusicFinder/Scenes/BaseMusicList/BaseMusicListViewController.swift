@@ -16,11 +16,13 @@ class BaseMusicListViewController: UIViewController, BaseMusicListVMToView {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialViewSetup()
+        viewModel?.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
     private func initialViewSetup() {
         self.loadingLabel.text = "Please wait while we load your music..."
+        self.firstLoadingIndicator.startAnimating()
     }
     
     func showHideLoadingView(isHidden: Bool) {
