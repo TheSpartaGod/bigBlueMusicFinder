@@ -6,8 +6,12 @@
 //
 
 import Foundation
-
-class BaseMusicListViewModel {
-    var view: BaseMusicListViewController?
+class BaseMusicListViewModel: BaseMusicListViewToVM {
+ 
+    var view: BaseMusicListVMToView?
+    
+    func viewDidLoad() {
+        
+    }
     
 }

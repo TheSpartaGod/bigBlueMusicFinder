@@ -7,14 +7,24 @@
 
 import UIKit
 
-class BaseMusicListViewController: UIViewController {
-    @IBOutlet weak var testLabel: UILabel!
+class BaseMusicListViewController: UIViewController, BaseMusicListVMToView {
     
-    weak var viewModel: BaseMusicListViewModel?
+    @IBOutlet weak var mainLoadingView: UIView!
+    @IBOutlet weak var loadingLabel: UILabel!
+    @IBOutlet weak var firstLoadingIndicator: UIActivityIndicatorView!
+    weak var viewModel: BaseMusicListViewToVM?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        initialViewSetup()
         // Do any additional setup after loading the view.
+    }
+    
+    private func initialViewSetup() {
+        self.loadingLabel.text = "Please wait while we load your music..."
+    }
+    
+    func showHideLoadingView(isHidden: Bool) {
+        self.mainLoadingView.isHidden = isHidden
     }
 
 
