@@ -13,6 +13,7 @@
                 <outlet property="firstLoadingIndicator" destination="ghM-4q-hFF" id="Adh-pT-ohy"/>
                 <outlet property="loadingLabel" destination="37l-xs-FDo" id="7eZ-Fw-SFY"/>
                 <outlet property="mainLoadingView" destination="0jO-dv-i9A" id="KBV-ZW-hQ1"/>
+                <outlet property="musicListTableView" destination="Hz8-Nq-yOJ" id="0en-U1-n1o"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,10 +23,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0jO-dv-i9A">
-                    <rect key="frame" x="0.0" y="62" width="402" height="778"/>
+                    <rect key="frame" x="0.0" y="118" width="402" height="722"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37l-xs-FDo">
-                            <rect key="frame" x="0.0" y="378.66666666666669" width="402" height="21"/>
+                            <rect key="frame" x="0.0" y="350.66666666666669" width="402" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="gx2-kB-mIe"/>
                             </constraints>
@@ -34,7 +35,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ghM-4q-hFF">
-                            <rect key="frame" x="191" y="411.66666666666669" width="20" height="20"/>
+                            <rect key="frame" x="191" y="383.66666666666669" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="2iw-sn-icm"/>
                                 <constraint firstAttribute="width" secondItem="ghM-4q-hFF" secondAttribute="height" multiplier="1:1" id="Mk6-NF-9hU"/>
@@ -50,13 +51,34 @@
                         <constraint firstItem="37l-xs-FDo" firstAttribute="centerY" secondItem="0jO-dv-i9A" secondAttribute="centerY" id="sG4-CS-kqJ"/>
                     </constraints>
                 </view>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gwS-pp-mXo">
+                    <rect key="frame" x="0.0" y="62" width="402" height="56"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="vKG-aM-MNI"/>
+                    </constraints>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="I8K-P0-vvY"/>
+                    </connections>
+                </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Hz8-Nq-yOJ">
+                    <rect key="frame" x="0.0" y="118" width="402" height="722"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="0jO-dv-i9A" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="5CC-Ma-ivh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Hz8-Nq-yOJ" secondAttribute="trailing" id="2Yj-GN-ZxM"/>
+                <constraint firstItem="0jO-dv-i9A" firstAttribute="top" secondItem="gwS-pp-mXo" secondAttribute="bottom" id="5CC-Ma-ivh"/>
                 <constraint firstAttribute="trailing" secondItem="0jO-dv-i9A" secondAttribute="trailing" id="Dpi-H5-sa0"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Hz8-Nq-yOJ" secondAttribute="bottom" id="GZX-ZJ-iEl"/>
+                <constraint firstItem="gwS-pp-mXo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="KpT-fI-Nh9"/>
+                <constraint firstItem="gwS-pp-mXo" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="KyZ-aa-laA"/>
+                <constraint firstItem="gwS-pp-mXo" firstAttribute="bottom" secondItem="Hz8-Nq-yOJ" secondAttribute="top" id="MDq-Sb-i2k"/>
+                <constraint firstItem="gwS-pp-mXo" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="bf9-Lo-FWv"/>
                 <constraint firstItem="0jO-dv-i9A" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hbA-zy-fYG"/>
+                <constraint firstItem="Hz8-Nq-yOJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mSx-tP-egz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0jO-dv-i9A" secondAttribute="bottom" id="y3K-KP-OaQ"/>
             </constraints>
             <point key="canvasLocation" x="-612" y="-41"/>

@@ -8,10 +8,13 @@
 import UIKit
 
 class BaseMusicListViewController: UIViewController, BaseMusicListVMToView {
-    
+
     @IBOutlet weak var mainLoadingView: UIView!
     @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet weak var firstLoadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var musicListTableView: UITableView!
+    let identifier = "MusicEntryCell"
+    let loadingText = "Please wait while we load your music..."
     weak var viewModel: BaseMusicListViewToVM?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,23 +24,47 @@ class BaseMusicListViewController: UIViewController, BaseMusicListVMToView {
     }
     
     private func initialViewSetup() {
-        self.loadingLabel.text = "Please wait while we load your music..."
-        self.firstLoadingIndicator.startAnimating()
+        self.musicListTableView.register(UINib(nibName: String(describing: MusicEntryCell.self), bundle: nil), forCellReuseIdentifier: identifier)
+        self.musicListTableView.dataSource = self
+        self.musicListTableView.delegate = self
+        
+        self.loadingLabel.text = loadingText
+        self.mainLoadingView.isHidden = true
     }
     
-    func showHideLoadingView(isHidden: Bool) {
+    func showHideLoadingView(isHidden: Bool, errorText: String?) {
+        // used when loading / display error
         self.mainLoadingView.isHidden = isHidden
+        self.musicListTableView.isHidden = !isHidden
+        (isHidden || errorText == nil) == true ? firstLoadingIndicator.stopAnimating() : firstLoadingIndicator.startAnimating()
+        if let errorText = errorText {
+            self.loadingLabel.text = errorText
+        } else {
+            self.loadingLabel.text = self.loadingText
+        }
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func reloadTableView() {
+        self.musicListTableView.reloadData()
     }
-    */
+    
+}
 
+extension BaseMusicListViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.getTrackCount() ?? .zero
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? MusicEntryCell else {
+            return UITableViewCell() }
+        cell.trackTitleLabel.text = viewModel?.getTrackName(index: indexPath.row)
+        cell.artistTitleLabel.text = viewModel?.getArtistName(index: indexPath.row)
+        cell.collectionTitleLabel.text = viewModel?.getCollectionName(index: indexPath.row)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }

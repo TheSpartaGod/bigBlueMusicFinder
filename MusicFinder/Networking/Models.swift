@@ -8,7 +8,7 @@
 import Foundation
 
 struct SearchResponse: Codable {
-    var resultCount: Decimal?
+    var resultCount: Int?
     var results: [MusicEntry]?
 }
 

@@ -26,6 +26,7 @@
 		99736E842CB81E86005F65E7 /* DataServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99736E832CB81E83005F65E7 /* DataServiceProtocol.swift */; };
 		99736E882CB82131005F65E7 /* MusicEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99736E862CB82131005F65E7 /* MusicEntryCell.swift */; };
 		99736E892CB82131005F65E7 /* MusicEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99736E872CB82131005F65E7 /* MusicEntryCell.xib */; };
+		99736E8B2CB827BD005F65E7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99736E8A2CB827BB005F65E7 /* Extensions.swift */; };
 		A5B9AAC984A53AA6B02982C7 /* Pods_MusicFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E87B6135DAD310BD5E41B7 /* Pods_MusicFinder.framework */; };
 		D64456279396D7C5CF5D4A66 /* Pods_MusicFinder_MusicFinderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B29787DF4D2275CA726D4F1A /* Pods_MusicFinder_MusicFinderUITests.framework */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,7 @@
 		99736E832CB81E83005F65E7 /* DataServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceProtocol.swift; sourceTree = "<group>"; };
 		99736E862CB82131005F65E7 /* MusicEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEntryCell.swift; sourceTree = "<group>"; };
 		99736E872CB82131005F65E7 /* MusicEntryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicEntryCell.xib; sourceTree = "<group>"; };
+		99736E8A2CB827BB005F65E7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		99C812642CB6CE7F00F09CEE /* MusicFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99C8127A2CB6CE8100F09CEE /* MusicFinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicFinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99C812842CB6CE8100F09CEE /* MusicFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +124,7 @@
 		992CFF992CB8111C007DC9D3 /* BaseMusicList */ = {
 			isa = PBXGroup;
 			children = (
+				99736E8C2CB831B1005F65E7 /* Components */,
 				99736E852CB82118005F65E7 /* Cells */,
 				992CFF952CB8111C007DC9D3 /* BaseMusicListProtocols.swift */,
 				992CFF962CB8111C007DC9D3 /* BaseMusicListView.xib */,
@@ -134,6 +137,7 @@
 		992CFF9A2CB8111C007DC9D3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				992CFF9D2CB8111C007DC9D3 /* BaseConfigurator.swift */,
 				992CFF992CB8111C007DC9D3 /* BaseMusicList */,
 			);
 			path = Scenes;
@@ -142,11 +146,11 @@
 		992CFFA52CB8111C007DC9D3 /* MusicFinder */ = {
 			isa = PBXGroup;
 			children = (
+				99736E8A2CB827BB005F65E7 /* Extensions.swift */,
 				99736E7E2CB81A62005F65E7 /* Networking */,
 				992CFF9A2CB8111C007DC9D3 /* Scenes */,
-				992CFF9B2CB8111C007DC9D3 /* AppDelegate.swift */,
 				992CFF9C2CB8111C007DC9D3 /* Assets.xcassets */,
-				992CFF9D2CB8111C007DC9D3 /* BaseConfigurator.swift */,
+				992CFF9B2CB8111C007DC9D3 /* AppDelegate.swift */,
 				992CFF9E2CB8111C007DC9D3 /* Info.plist */,
 				992CFFA02CB8111C007DC9D3 /* LaunchScreen.storyboard */,
 				992CFFA22CB8111C007DC9D3 /* Main.storyboard */,
@@ -189,6 +193,13 @@
 				99736E872CB82131005F65E7 /* MusicEntryCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		99736E8C2CB831B1005F65E7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		99C8125B2CB6CE7F00F09CEE = {
@@ -475,6 +486,7 @@
 				992CFFAD2CB8111C007DC9D3 /* BaseMusicListViewModel.swift in Sources */,
 				992CFFAE2CB8111C007DC9D3 /* AppDelegate.swift in Sources */,
 				992CFFAF2CB8111C007DC9D3 /* BaseConfigurator.swift in Sources */,
+				99736E8B2CB827BD005F65E7 /* Extensions.swift in Sources */,
 				992CFFB02CB8111C007DC9D3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,6 +14,7 @@ public class BaseConfigurator {
         let view: BaseMusicListViewController = BaseMusicListViewController()
         let viewModel = BaseMusicListViewModel(dataService: DataService.shared)
         view.viewModel = viewModel
+        viewModel.view = view
     
         return view
     }
