@@ -10,10 +10,21 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+               if let window = window {
+                   let baseView = BaseConfigurator.shared.createBaseScreen()
+                   let navigationController = UINavigationController(rootViewController: baseView)
+                   navigationController.isNavigationBarHidden = true
+                   window.rootViewController = navigationController
+                   self.window = window
+                   window.makeKeyAndVisible()
+               }
+               // Override
+        
         return true
     }
 
