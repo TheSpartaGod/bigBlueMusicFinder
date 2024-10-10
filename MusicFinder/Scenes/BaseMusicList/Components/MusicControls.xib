@@ -21,9 +21,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15Y-Pz-sdV">
-                    <rect key="frame" x="144" y="0.0" width="56" height="56"/>
+                    <rect key="frame" x="162.33333333333334" y="0.0" width="19.333333333333343" height="56"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="15Y-Pz-sdV" secondAttribute="height" multiplier="1:1" id="MXj-h3-Nkn"/>
                         <constraint firstAttribute="height" constant="56" id="kJA-43-pSF"/>
                     </constraints>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>

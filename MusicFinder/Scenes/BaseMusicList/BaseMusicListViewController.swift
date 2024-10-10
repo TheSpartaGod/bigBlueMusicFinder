@@ -13,6 +13,7 @@ class BaseMusicListViewController: UIViewController, BaseMusicListVMToView {
     @IBOutlet weak var mainLoadingView: UIView!
     @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet weak var firstLoadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var musicListTableView: UITableView!
     
     @IBOutlet weak var musicControls: MusicControls!
@@ -31,6 +32,7 @@ class BaseMusicListViewController: UIViewController, BaseMusicListVMToView {
         self.musicListTableView.dataSource = self
         self.musicListTableView.delegate = self
         self.musicControls.delegate = self
+        self.searchBar.delegate = self
         self.loadingLabel.text = loadingText
         self.mainLoadingView.isHidden = true
     }
@@ -88,6 +90,7 @@ extension BaseMusicListViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        musicControls.startPlaying()
         viewModel?.selectedTrack(index: indexPath.row)
     }
 }
@@ -100,6 +103,17 @@ extension BaseMusicListViewController: MusicControlsDelegate {
     func pauseButtonTapped() {
         self.player?.pause()
     }
+}
+
+extension BaseMusicListViewController: UISearchBarDelegate {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text, text != .emptyString else { return }
+        viewModel?.searchTracks(searchTerm: text)
+    }
     
-    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+        guard let text = searchBar.text, text != .emptyString else { return }
+        viewModel?.searchTracks(searchTerm: text)
+    }
 }

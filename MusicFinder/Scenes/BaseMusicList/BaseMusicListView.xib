@@ -15,6 +15,7 @@
                 <outlet property="mainLoadingView" destination="0jO-dv-i9A" id="KBV-ZW-hQ1"/>
                 <outlet property="musicControls" destination="5bP-hY-9hz" id="5Ms-An-9OD"/>
                 <outlet property="musicListTableView" destination="Hz8-Nq-yOJ" id="0en-U1-n1o"/>
+                <outlet property="searchBar" destination="gwS-pp-mXo" id="CDK-te-ESI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gwS-pp-mXo">
+                <searchBar contentMode="redraw" placeholder="Search some tracks to play..." translatesAutoresizingMaskIntoConstraints="NO" id="gwS-pp-mXo">
                     <rect key="frame" x="0.0" y="62" width="402" height="56"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="vKG-aM-MNI"/>

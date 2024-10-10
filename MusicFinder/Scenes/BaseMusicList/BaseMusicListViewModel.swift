@@ -10,7 +10,6 @@ import Alamofire
 
 class BaseMusicListViewModel: BaseMusicListViewToVM {
 
- 
     var view: BaseMusicListVMToView?
     var dataService: DataService?
     var searchResponse: SearchResponse?
@@ -21,7 +20,6 @@ class BaseMusicListViewModel: BaseMusicListViewToVM {
     }
     func viewDidLoad() {
         // probably not needed, since when user first navigate in we don't immediately call api
-        searchTracks(searchTerm: "charliexcx")
     }
     
     func searchTracks(searchTerm: String) {

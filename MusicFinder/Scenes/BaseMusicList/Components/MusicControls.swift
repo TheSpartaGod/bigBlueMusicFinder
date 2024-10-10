@@ -19,7 +19,7 @@ class MusicControls: UIView {
     var isPlaying: Bool = false
     
     @IBAction func playPauseButtonTapped(_ sender: Any) {
-        setPlaying(isPlaying: !isPlaying)
+        setPlaying(isPlaying: !self.isPlaying)
     }
     
     public override init(frame: CGRect) {
@@ -47,18 +47,27 @@ class MusicControls: UIView {
         
     }
     func setupUI() {
-        self.playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        self.playPauseButton.setImage(nil, for: .normal)
+        self.playPauseButton.setTitle("Pick your music!", for: .normal)
     }
     
     func setPlaying(isPlaying: Bool) {
-        if isPlaying {
-            self.delegate?.pauseButtonTapped()
-            self.playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-        } else {
-            self.delegate?.playButtonTapped()
-            self.playPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-        }
         self.isPlaying = isPlaying
+        if isPlaying {
+            self.delegate?.playButtonTapped()
+            self.playPauseButton.setTitle(.emptyString, for: .normal)
+            self.playPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        } else {
+            self.delegate?.pauseButtonTapped()
+            self.playPauseButton.setTitle(.emptyString, for: .normal)
+            self.playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        }
+    }
+    
+    func startPlaying() {
+        self.isPlaying = true
+        self.playPauseButton.setTitle(.emptyString, for: .normal)
+        self.playPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
     }
 
 }
