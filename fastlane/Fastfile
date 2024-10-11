@@ -40,14 +40,14 @@ platform :ios do
     )
   end
 
-  desc "Deploy to the App Store"
+  desc "Deploy to testflight"
   lane :release do
     match(type: "appstore") 
     build_app(
       scheme: "MusicFinder"
     )
     upload_to_app_store(
-      app_identifier: "com.TSG.MusicFinder",  
+      app_identifier: "TSG.MusicFinder",  
       skip_metadata: true,
       skip_screenshots: true,
       automatic_release: false  # Set to true for immediate release
