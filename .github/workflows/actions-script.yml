@@ -32,10 +32,17 @@ jobs:
         run: sudo xcode-select -switch /Applications/Xcode_15.4.app
 
       - name: Match Provisioning Profile
-        run: fastlane match development
+        run: |
+          fastlane match development \
+          --api_key "
+          {
+            \"filepath\": \"./ApiKey_0RQWT6BMRKY7.p8",
+            \"key_id\": \"0RQWT6BMRKY7\",
+            \"issuer_id\": \"9706c496-e1fb-4ec8-8c3f-2ad3ec0cb363\"
+          }
+          "
         env: 
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
 
       - name: Build iOS App
         run: |
