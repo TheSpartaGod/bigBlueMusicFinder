@@ -34,6 +34,7 @@ jobs:
       - name: Build iOS App
         run: |
           xcodebuild clean build \
+          -allowProvisioningUpdates \
           -workspace MusicFinder.xcworkspace \
           -scheme MusicFinder \
           -sdk iphoneos \
@@ -73,7 +74,7 @@ jobs:
       - name: Install Bundler
         run: bundle install
 
-      - name: Deploy to AppCenter 
+      - name: Deploy to App Store 
         run: bundle exec fastlane release 
         env:
           APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
