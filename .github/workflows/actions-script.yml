@@ -31,6 +31,11 @@ jobs:
       - name: Set up Xcode
         run: sudo xcode-select -switch /Applications/Xcode_15.4.app
 
+      - name: Match Provisioning Profile
+        run: fastlane match
+        env: 
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+
       - name: Build iOS App
         run: |
           xcodebuild clean build \
