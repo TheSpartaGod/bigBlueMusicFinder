@@ -16,4 +16,5 @@ struct MusicEntry: Codable {
     var artistName, collectionName, trackName: String?
     var releaseDate: String?
     var previewUrl: String? // only use previewUrl so user don't need to link itunes account :P
+    var artworkUrl100: String?
 }

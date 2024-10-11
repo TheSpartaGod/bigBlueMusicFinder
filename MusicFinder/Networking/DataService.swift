@@ -32,4 +32,27 @@ public class DataService: DataServiceProtocol {
             }
         }
     }
+    func loadImageFromUrl(index: Int, url: String, escapeClosure: @escaping (Int, UIImage?, AFError?) -> ()) {
+        let request = AF.request(url, method: .get) { [weak self] in
+            guard let timeout = self?.defTimeoutInterval else { return }
+            $0.timeoutInterval = timeout
+        }
+        var responseImage: UIImage?
+        var responseError: AFError?
+        request.response { response in
+            DispatchQueue.main.async { [weak self] in
+                switch response.result {
+                case .success(let data):
+                    guard let data = data, let image: UIImage = UIImage(data: data) else { return }
+                    responseImage = image
+                    escapeClosure(index, responseImage, responseError)
+                    print("acquired image")
+                case .failure(let error):
+                    responseError = error
+                    print("error in image! \(error.localizedDescription)")
+                    escapeClosure(index, responseImage, responseError)
+                }
+            }
+        }
+    }
 }

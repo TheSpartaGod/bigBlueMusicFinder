@@ -49,6 +49,7 @@ class MusicControls: UIView {
     func setupUI() {
         self.playPauseButton.setImage(nil, for: .normal)
         self.playPauseButton.setTitle("Pick your music!", for: .normal)
+        self.playPauseButton.setTitleColor(.label, for: .normal)
     }
     
     func setPlaying(isPlaying: Bool) {

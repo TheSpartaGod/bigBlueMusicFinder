@@ -15,12 +15,13 @@ class BaseMusicListViewController: UIViewController, BaseMusicListVMToView {
     @IBOutlet weak var firstLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var musicListTableView: UITableView!
-    
     @IBOutlet weak var musicControls: MusicControls!
+    
+    weak var viewModel: BaseMusicListViewToVM?
     let identifier = "MusicEntryCell"
     let loadingText = "Please wait while we load your music..."
     var player: AVPlayer?
-    weak var viewModel: BaseMusicListViewToVM?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialViewSetup()
@@ -49,8 +50,13 @@ class BaseMusicListViewController: UIViewController, BaseMusicListVMToView {
         }
     }
     
-    func reloadTableView() {
-        self.musicListTableView.reloadData()
+    func reloadTableView(atRow: Int?) {
+        if let row = atRow {
+            self.musicListTableView.reloadRows(at: [IndexPath(row: row, section: .zero)], with: .none)
+        } else {
+            self.musicListTableView.reloadData()
+        }
+        
     }
     
     func playAudioFromUrl(url: String) {
@@ -79,9 +85,22 @@ extension BaseMusicListViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? MusicEntryCell else {
             return UITableViewCell() }
+        if let index = viewModel?.getPlayingIndex(), indexPath.row == index {
+            cell.nowPlayingIndicator.isHidden = false
+        }
+        cell.selectionStyle = .none
         cell.trackTitleLabel.text = viewModel?.getTrackName(index: indexPath.row)
         cell.artistTitleLabel.text = viewModel?.getArtistName(index: indexPath.row)
         cell.collectionTitleLabel.text = viewModel?.getCollectionName(index: indexPath.row)
+        cell.trackImageView.image = UIImage()
+        viewModel?.getTrackImage(index: indexPath.row, escapeAction: { index, image in
+            if index == indexPath.row {
+                DispatchQueue.main.async { [weak self] in
+                    cell.trackImageView.image = image
+                    cell.trackImageView.isHidden = false
+                }
+            }
+        })
         return cell
     }
     
@@ -90,8 +109,10 @@ extension BaseMusicListViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        musicControls.startPlaying()
         viewModel?.selectedTrack(index: indexPath.row)
+        tableView.reloadRows(at: [indexPath], with: .none)
+        musicControls.startPlaying()
+        
     }
 }
 

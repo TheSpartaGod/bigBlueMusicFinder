@@ -11,6 +11,7 @@ protocol DataServiceProtocol: AnyObject {
     var searchResponseDelegate: SearchResponseProtocol? { get set }
     
     func searchTrack(searchTerm: String)
+    func loadImageFromUrl(index: Int, url: String, escapeClosure: @escaping (Int, UIImage?, AFError?) -> ())
 }
 
 protocol SearchResponseProtocol: AnyObject {
