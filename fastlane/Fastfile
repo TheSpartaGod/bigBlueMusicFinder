@@ -16,8 +16,33 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Description of what the lane does"
-  lane :custom_lane do
-    # add actions here: https://docs.fastlane.tools/actions
+  desc "Build iOS app"
+  lane :build do
+    build_app(
+      scheme: "MusicFinder", 
+      clean: true
+    )
+  end
+
+  desc "Run tests"
+  lane :test do
+    run_tests(
+      scheme: "MusicFinderTests",  # Replace with your actual test scheme
+      clean: true,
+      destination: "platform=iOS Simulator,name=iPhone 14,OS=16.0"  # Change as necessary
+    )
+  end
+
+  desc "Deploy to the App Store"
+  lane :release do
+    build_app(
+      scheme: "MusicFinder"
+    )
+    upload_to_app_store(
+      app_identifier: "com.TSG.MusicFinder",  
+      skip_metadata: true,
+      skip_screenshots: true,
+      automatic_release: false  # Set to true for immediate release
+    )
   end
 end
