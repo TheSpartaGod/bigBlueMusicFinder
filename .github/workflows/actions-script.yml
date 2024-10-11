@@ -1,0 +1,81 @@
+name: iOS CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby for Fastlane
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+
+      - name: Install Bundler
+        run: bundle install
+
+      - name: Install dependencies
+        run: |
+          bundle exec pod install
+
+      - name: Set up Xcode
+        run: sudo xcode-select -switch /Applications/Xcode_14.0.app
+
+      - name: Build iOS App
+        run: |
+          xcodebuild clean build \
+          -workspace MusicFinder.xcworkspace \
+          -scheme MusicFinder \
+          -sdk iphoneos \
+          -configuration Release \
+          -derivedDataPath build/
+
+  test:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Xcode
+        run: sudo xcode-select -switch /Applications/Xcode_14.0.app
+
+      - name: Run Tests
+        run: |
+          xcodebuild test \
+          -workspace MusicFinder.xcworkspace \
+          -scheme MyApp \
+          -sdk iphonesimulator \
+          -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0'
+
+  deploy:
+    needs: build
+    runs-on: macos-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby for Fastlane
+        uses: ruby/setup-ruby@v1
+
+      - name: Install Bundler
+        run: bundle install
+
+      - name: Deploy to AppCenter 
+        run: bundle exec fastlane release 
+        env:
+          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
