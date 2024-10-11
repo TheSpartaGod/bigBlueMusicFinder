@@ -36,8 +36,8 @@ jobs:
           fastlane match development \
           --api_key "
           {
-            \"filepath\": \"./ApiKey_0RQWT6BMRKY7.p8\",
-            \"key_id\": \"0RQWT6BMRKY7\",
+            \"filepath\": \"./AuthKey_Y7Z38TF7TR.p8.p8\",
+            \"key_id\": \"Y7Z38TF7TR\",
             \"issuer_id\": \"9706c496-e1fb-4ec8-8c3f-2ad3ec0cb363\"
           }
           "
