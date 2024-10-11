@@ -43,13 +43,13 @@ class MusicControls: UIView {
         self.backgroundColor = .clear
         self.backgroundColor = .none
         addSubview(contentView)
-        self.contentView.backgroundColor = .secondarySystemBackground
+        self.contentView.backgroundColor = .darkGray
         
     }
     func setupUI() {
         self.playPauseButton.setImage(nil, for: .normal)
         self.playPauseButton.setTitle("Pick your music!", for: .normal)
-        self.playPauseButton.setTitleColor(.label, for: .normal)
+        self.playPauseButton.setTitleColor(.black, for: .normal)
     }
     
     func setPlaying(isPlaying: Bool) {
