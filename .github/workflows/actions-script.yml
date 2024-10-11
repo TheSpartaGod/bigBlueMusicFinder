@@ -32,7 +32,7 @@ jobs:
         run: sudo xcode-select -switch /Applications/Xcode_15.4.app
 
       - name: Match Provisioning Profile
-        run: fastlane match
+        run: fastlane match development
         env: 
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
