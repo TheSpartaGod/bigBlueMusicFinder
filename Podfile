@@ -3,7 +3,7 @@
 
 target 'MusicFinder' do
   use_frameworks!
-  pod 'Alamofire'
+  pod 'Alamofire', '5.9.1'
 
   target 'MusicFinderTests' do
     inherit! :search_paths
